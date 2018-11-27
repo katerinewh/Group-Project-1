@@ -1,6 +1,0 @@
-// $ npm init
-// With the package.json file added, I’ll install Express, body-parser, and Pusher npm packages. Run the following command:
-
-// $ npm install –save pusher express body-parser
-
-"start": "node server.js"
