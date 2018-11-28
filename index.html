@@ -1,5 +1,6 @@
 <!DOCTYPE .html>
 <html lang="en">
+
 <head>
     <!-- Disable tap highlight on IE -->
     <meta name="msapplication-tap-highlight" content="no">
@@ -36,26 +37,111 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
-    <title>Chat</title>
+
+    <title>Document</title>
 </head>
+
 <body>
 
+    <!-- Display Job listings as Buttons (will open up more info)-->
+    <div class="display-listing" id="listing-div-id">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Job Listings</h5>
+                <p id="job-links-display"></p>
+            </div>
+        </div>
+    </div>
 
-<script src="assets/javascript/script.js"></script>
-    
+    <!-- Empty modal to display job info on click -->
+    <div id="job-info-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="job-content"></p>
+        </div>
+    </div>
 
+    <!-- For button and modal (BS embedded functionality) -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#job-modal" id="add-job-btn">
+        Add your posting.
+    </button>
 
+    <div class="modal fade" id="job-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
 
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Job Description</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!-- Job Form Parameter
+    1. Title ✓
+    2. Location ✓
+    3. Full/Part-time ✓
+    4. Description ✓
+    5. link to company posting ✓
+    6. contact info ✓
+    -->
+                <div class="modal-body">
+
+                    <form>
+                        <div class="form-group">
+                            <label for="job-title">Job Title</label>
+                            <input type="text" class="form-control" id="title-input" placeholder="Full-Stack Developer">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" class="form-control" id="location-input" placeholder="San Diego, CA">
+                        </div>
+
+                        <label class="mr-sm-2" for="inlineFormCustomSelect">Part/Full-time</label>
+                        <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="time-input">
+                            <option selected>Choose...</option>
+                            <option value="1">Part-time</option>
+                            <option value="2">Full-time</option>
+                        </select>
+
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" id="description-input" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="posting-link">Posting Link</label>
+                            <input type="text" class="form-control" id="link-input" placeholder="www.yourjob.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email-label">Contact</label>
+                            <input type="email" class="form-control" id="contact-input" aria-describedby="emailHelp"
+                                placeholder="Enter email">
+                        </div>
+
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="post-btn">Save changes</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 
 
 <!-- CHAT HTML HERE -->
 
 <div class= "container">
-<body>
 <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
   <!-- Header section containing logo -->
@@ -112,7 +198,18 @@
     </div>
   </main>
 </div>
-</div>
+  
+   <!-- Javascript links jQuery, BSjQuery, firebase, ownJS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+
+  <script src="assets/javascript/script.js"></script>
 
 </body>
+
 </html>
