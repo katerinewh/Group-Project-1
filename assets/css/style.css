@@ -1,5 +1,6 @@
 
 
+
 /* CHAT STYLE */
 html, body {
     font-family: 'Roboto', 'Helvetica', sans-serif;
@@ -184,3 +185,13 @@ html, body {
     top: -1px;
     margin-right: 5px;
   }
+=======
+.modal-content{
+    overflow: auto;
+    margin: 5px;
+}
+
+textarea {
+    resize: none;
+}
+
