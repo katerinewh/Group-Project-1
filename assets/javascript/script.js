@@ -1,7 +1,14 @@
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyAakeEevKf-1RdnnBLDYpcOSZT9sVEoE8o",
+  authDomain: "group-project-firebase.firebaseapp.com",
+  databaseURL: "https://group-project-firebase.firebaseio.com",
+  projectId: "group-project-firebase",
+  storageBucket: "group-project-firebase.appspot.com",
+  messagingSenderId: "423956817562"
+};
 
-
-
-
+firebase.initializeApp(config);
 
 // Initializes FriendlyChat.
 function FriendlyChat() {
