@@ -1,0 +1,8 @@
+.modal-content{
+    overflow: auto;
+    margin: 5px;
+}
+
+textarea {
+    resize: none;
+}
