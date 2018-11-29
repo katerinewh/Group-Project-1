@@ -87,6 +87,7 @@ $(document).ready(function () {
 
 
     // Kat's Code Start
+    
     $("#send-user-info").on("click", function () {
         loginNew();
     });

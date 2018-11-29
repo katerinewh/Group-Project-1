@@ -1,3 +1,9 @@
+#firechat #firechat-tabs {
+    height: 375px;
+    width: 500px;
+}
+
+
 .modal-content{
     overflow: auto;
     margin: 5px;
