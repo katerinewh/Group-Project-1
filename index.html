@@ -6,61 +6,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
-
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <title>Trilogy Alumni Job Search</title>
 
-
-
-    <title>Document</title>
 </head>
 
 <body>
 
-    <!-- Display Job listings as Buttons (will open up more info)-->
-    <div class="display-listing" id="listing-div-id">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Job Listings</h5>
-                <p id="job-links-display"></p>
-            </div>
+    <!-- Display Job listings as divs (buttons that will open up more info)-->
+    <div class="card" style="width: 20rem;" id="listing-div-id">
+        <div class="card-header" id="job-listing-header">
+            Job Listings
         </div>
+        <div class="card-body"  id="job-links-display"></div>
     </div>
 
+
     <!-- Empty modal to display job info on click -->
-    <div id="job-info-modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <p id="job-content"></p>
+    <div id="job-info-modal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header-div text-center">
+                   
+                </div>
+                <div class="modal-body">
+                    <span id="location-span"></span>
+                    <p>Job Type:</p><span id="job-type-span"></span>
+                    <p>Description:</p><span id="description-span"></span>
+                    <p>Contact:</p><span id="contact-span"></span>
+                    <p>Link:</p><span id="link-span"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- For button and modal (BS embedded functionality) -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#job-modal" id="add-job-btn">
-        Add your posting.
+        Add your posting
     </button>
-
+    <!-- Modal for job form (opens onclick "Add your posting button") -->
     <div class="modal fade" id="job-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Job Description</h5>
+                    <h3 class="modal-title" id="exampleModalLongTitle">Job Description</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <!-- Job Form Parameter
-    1. Title ✓
-    2. Location ✓
-    3. Full/Part-time ✓
-    4. Description ✓
-    5. link to company posting ✓
-    6. contact info ✓
-    -->
                 <div class="modal-body">
 
                     <form>
@@ -77,8 +77,8 @@
                         <label class="mr-sm-2" for="inlineFormCustomSelect">Part/Full-time</label>
                         <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="time-input">
                             <option selected>Choose...</option>
-                            <option value="1">Part-time</option>
-                            <option value="2">Full-time</option>
+                            <option value="Part-time">Part-time</option>
+                            <option value="Full-time">Full-time</option>
                         </select>
 
                         <div class="form-group">
@@ -87,14 +87,19 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="posting-link">Posting Link</label>
-                            <input type="text" class="form-control" id="link-input" placeholder="www.yourjob.com">
+                            <label class="sr-only" for="posting-link">Posting Link</label>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">http://</div>
+                                </div>
+                                <input type="text" class="form-control" id="link-input" placeholder="www.yourjob.com">
+                            </div>
                         </div>
 
                         <div class="form-group">
                             <label for="email-label">Contact</label>
                             <input type="email" class="form-control" id="contact-input" aria-describedby="emailHelp"
-                                placeholder="Enter email">
+                                placeholder="business@email.com">
                         </div>
 
                     </form>
@@ -102,15 +107,11 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="post-btn">Save changes</button>
+                    <button type="button" class="btn btn-primary" id="post-btn">Post Job</button>
                 </div>
-
             </div>
         </div>
     </div>
-
-
-
 
 
 
