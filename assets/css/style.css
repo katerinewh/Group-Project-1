@@ -6,6 +6,7 @@
 textarea {
     resize: none;
 }
+
 #job-btn {
     border: 2px;
     border-style: solid;
@@ -16,9 +17,7 @@ textarea {
     
 }
 
-
 #job-listing-header {
-
     margin: 2px;
     padding: 5px;
 }
