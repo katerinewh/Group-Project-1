@@ -19,11 +19,9 @@
 
     <!-- Stylesheets -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <title>Tril</title>
-
 </head>
 
 <body>
@@ -58,10 +56,7 @@
         </div>
     </div>
 
-    <!-- For button and modal (BS embedded functionality) -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#job-modal" id="add-job-btn">
-        Add your posting
-    </button>
+
     <!-- Modal for job form (opens onclick "Add your posting button") -->
     <div class="modal fade" id="job-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true">
@@ -74,6 +69,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+
                 <div class="modal-body">
 
                     <form>
@@ -118,94 +114,80 @@
                     </form>
 
                 </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary" id="post-btn">Post Job</button>
                 </div>
+
             </div>
+        </div>
+        
     </div>
 
-        <!-- Display Job listings as Buttons (will open up more info)-->
-        <div class="display-listing" id="listing-div-id">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Job Listings</h5>
-                    <p id="job-links-display"></p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Empty modal to display job info on click -->
-        <div id="job-info-modal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <p id="job-content"></p>
-            </div>
-        </div>
-
         <!-- For button and modal (BS embedded functionality) -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#job-modal" id="add-job-btn">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#job-modal" id="add-job-btn">
             Add your posting.
-        </button>
+    </button>
 
-        <div class="modal fade" id="job-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    <div class="modal fade" id="job-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
             aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
 
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Job Description</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Job Description</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
 
-                    <div class="modal-body">
+                <div class="modal-body">
 
-                        <form>
-                            <div class="form-group">
-                                <label for="job-title">Job Title</label>
-                                <input type="text" class="form-control" id="title-input" placeholder="Full-Stack Developer">
-                            </div>
+                    <form>
+                        <div class="form-group">
+                            <label for="job-title">Job Title</label>
+                            <input type="text" class="form-control" id="title-input" placeholder="Full-Stack Developer">
+                        </div>
 
-                            <div class="form-group">
-                                <label for="location">Location</label>
-                                <input type="text" class="form-control" id="location-input" placeholder="San Diego, CA">
-                            </div>
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" class="form-control" id="location-input" placeholder="San Diego, CA">
+                        </div>
 
-                            <label class="mr-sm-2" for="inlineFormCustomSelect">Part/Full-time</label>
-                            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="time-input">
-                                <option selected>Choose...</option>
-                                <option value="1">Part-time</option>
-                                <option value="2">Full-time</option>
-                            </select>
+                        <label class="mr-sm-2" for="inlineFormCustomSelect">Part/Full-time</label>
+                        <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="time-input">
+                            <option selected>Choose...</option>
+                            <option value="1">Part-time</option>
+                            <option value="2">Full-time</option>
+                        </select>
 
-                            <div class="form-group">
-                                <label for="description">Description</label>
-                                <textarea class="form-control" id="description-input" rows="3"></textarea>
-                            </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" id="description-input" rows="3"></textarea>
+                        </div>
 
-                            <div class="form-group">
-                                <label for="posting-link">Posting Link</label>
-                                <input type="text" class="form-control" id="link-input" placeholder="www.yourjob.com">
-                            </div>
+                        <div class="form-group">
+                            <label for="posting-link">Posting Link</label>
+                            <input type="text" class="form-control" id="link-input" placeholder="www.yourjob.com">
+                        </div>
 
-                            <div class="form-group">
-                                <label for="email-label">Contact</label>
-                                <input type="email" class="form-control" id="contact-input" aria-describedby="emailHelp"
+                        <div class="form-group">
+                            <label for="email-label">Contact</label>
+                            <input type="email" class="form-control" id="contact-input" aria-describedby="emailHelp"
                                     placeholder="Enter email">
-                            </div>
+                        </div>
 
-                        </form>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" id="post-btn">Save changes</button>
-                    </div>
-
+                    </form>
 
                 </div>
+                    
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="post-btn">Save changes</button>
+                </div>
+
+
             </div>
         </div>
     </div>
@@ -268,10 +250,13 @@
 
     <div id='firechat-footer' class='clearfix'></div>
 
+
+
+
+
+
+
     
-
-        
-
         <!-- Javascript links jQuery, BSjQuery, firebase, ownJS -->
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 
