@@ -1,0 +1,24 @@
+.container {
+    margin-top: 100px;
+    width: 75%;
+
+
+}
+
+form {
+    margin-top: 5%;
+}
+
+.input-group {
+    height: 400%;
+}
+
+.card {
+    margin-bottom: 20px;
+    padding: 25px;
+    cursor: pointer;
+}
+
+.card:hover {
+    background-color: #efefef;
+}
