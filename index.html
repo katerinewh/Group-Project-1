@@ -6,12 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
   <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
   <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
   <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
 
@@ -28,41 +27,41 @@
   <title>Trilogy JobConnect</title>
 </head>
 
-< <!-- Display Job listings as Buttons (will open up more info)-->
-  <div class="display-listing" id="listing-div-id">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Job Listings</h5>
-        <p id="job-links-display"></p>
-      </div>
+<!-- Display Job listings as Buttons (will open up more info)-->
+<div class="display-listing" id="listing-div-id">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Job Listings</h5>
+      <p id="job-links-display"></p>
     </div>
   </div>
+</div>
 
-  <!-- Empty modal to display job info on click -->
-  <div id="job-info-modal" class="modal">
+<!-- Empty modal to display job info on click -->
+<div id="job-info-modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p id="job-content"></p>
+  </div>
+</div>
+
+<!-- For button and modal (BS embedded functionality) -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#job-modal" id="add-job-btn">
+  Add your posting.
+</button>
+
+<div class="modal fade" id="job-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <span class="close">&times;</span>
-      <p id="job-content"></p>
-    </div>
-  </div>
 
-  <!-- For button and modal (BS embedded functionality) -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#job-modal" id="add-job-btn">
-    Add your posting.
-  </button>
-
-  <div class="modal fade" id="job-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Job Description</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <!-- Job Form Parameter
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Job Description</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- Job Form Parameter
     1. Title ✓
     2. Location ✓
     3. Full/Part-time ✓
@@ -70,58 +69,56 @@
     5. link to company posting ✓
     6. contact info ✓
     -->
-        <div class="modal-body">
+      <div class="modal-body">
 
-          <form>
-            <div class="form-group">
-              <label for="job-title">Job Title</label>
-              <input type="text" class="form-control" id="title-input" placeholder="Full-Stack Developer">
-            </div>
+        <form>
+          <div class="form-group">
+            <label for="job-title">Job Title</label>
+            <input type="text" class="form-control" id="title-input" placeholder="Full-Stack Developer">
+          </div>
 
-            <div class="form-group">
-              <label for="location">Location</label>
-              <input type="text" class="form-control" id="location-input" placeholder="San Diego, CA">
-            </div>
+          <div class="form-group">
+            <label for="location">Location</label>
+            <input type="text" class="form-control" id="location-input" placeholder="San Diego, CA">
+          </div>
 
-            <label class="mr-sm-2" for="inlineFormCustomSelect">Part/Full-time</label>
-            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="time-input">
-              <option selected>Choose...</option>
-              <option value="1">Part-time</option>
-              <option value="2">Full-time</option>
-            </select>
+          <label class="mr-sm-2" for="inlineFormCustomSelect">Part/Full-time</label>
+          <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="time-input">
+            <option selected>Choose...</option>
+            <option value="1">Part-time</option>
+            <option value="2">Full-time</option>
+          </select>
 
-            <div class="form-group">
-              <label for="description">Description</label>
-              <textarea class="form-control" id="description-input" rows="3"></textarea>
-            </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description-input" rows="3"></textarea>
+          </div>
 
-            <div class="form-group">
-              <label for="posting-link">Posting Link</label>
-              <input type="text" class="form-control" id="link-input" placeholder="www.yourjob.com">
-            </div>
+          <div class="form-group">
+            <label for="posting-link">Posting Link</label>
+            <input type="text" class="form-control" id="link-input" placeholder="www.yourjob.com">
+          </div>
 
-            <div class="form-group">
-              <label for="email-label">Contact</label>
-              <input type="email" class="form-control" id="contact-input" aria-describedby="emailHelp" placeholder="Enter email">
-            </div>
+          <div class="form-group">
+            <label for="email-label">Contact</label>
+            <input type="email" class="form-control" id="contact-input" aria-describedby="emailHelp" placeholder="Enter email">
+          </div>
 
-          </form>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="post-btn">Save changes</button>
-        </div>
+        </form>
 
       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="post-btn">Save changes</button>
+      </div>
+
     </div>
   </div>
-  </div>
-  </div>
+</div>
 
 
-  <!-- CHAT HTML HERE -->
-  <div class="modal fade" id="modalSubscriptionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+<!-- CHAT HTML HERE -->
+<div class="modal fade" id="modalSubscriptionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -134,57 +131,61 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <i class="fa fa-user prefix grey-text"></i>
-          <input type="text" id="form3" class="form-control validate">
+          <input type="text" id="name" class="form-control validate">
           <label data-error="wrong" data-success="right" for="form3">Your name</label>
         </div>
 
         <div class="md-form mb-4">
           <i class="fa fa-envelope prefix grey-text"></i>
-          <input type="email" id="form2" class="form-control validate">
+          <input type="email" id="email" class="form-control validate">
           <label data-error="wrong" data-success="right" for="form2">Your email</label>
+        </div>
+
+        <div class="md-form mb-4">
+          <i class="fa fa-envelope prefix grey-text"></i>
+          <input type="password" id="password" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="form2">Password</label>
         </div>
 
       </div>
       <div class="modal-footer d-flex justify-content-center">
-        <button class="btn btn-indigo">Send <i class="fa fa-paper-plane-o ml-1"></i></button>
+        <button class="btn btn-indigo" id="send-user-info">Send <i class="fa fa-paper-plane-o ml-1"></i></button>
       </div>
     </div>
   </div>
 </div>
 
+
 <div class="text-center">
-  <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalSubscriptionForm">Log in with Firebase
+  <button class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalSubscriptionForm">Log in with
+    Firebase</button>
 </div>
-    
-    <div id="firechat-wrapper"></div>
 
-    <div id='firechat' class='full'>
-      <div id='firechat-header' class='clearfix'>
-        <div class='clearfix'>
-        </div>
-      </div>
-    </div>
-    </div>
-    <div id='firechat-tabs' class='clearfix'>
-      <ul id='firechat-tab-list' class='nav nav-tabs clearfix'></ul>
-      <div id='firechat-tab-content' class='tab-content'></div>
-    </div>
+<div id="firechat-wrapper"></div>
 
-    <div id='firechat-footer' class='clearfix'></div>
+<div id='firechat' class='full'>
+  <div id='firechat-header' class='clearfix'>
+    <div class='clearfix'>
     </div>
-    </div>
-    </div>
-    <!-- Javascript links jQuery, BSjQuery, firebase, ownJS -->
-    <!-- Javascript links jQuery, BSjQuery, firebase, ownJS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-      crossorigin="anonymous"></script>
+  </div>
+</div>
+<div id='firechat-tabs' class='clearfix'>
+  <ul id='firechat-tab-list' class='nav nav-tabs clearfix'></ul>
+  <div id='firechat-tab-content' class='tab-content'></div>
+</div>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-      crossorigin="anonymous"></script>
+<div id='firechat-footer' class='clearfix'></div>
+<!-- Javascript links jQuery, BSjQuery, firebase, ownJS -->
+<!-- Javascript links jQuery, BSjQuery, firebase, ownJS -->
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
 
-    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+  crossorigin="anonymous"></script>
 
-    <script src="assets/javascript/script.js"></script>
-    </body>
+<script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+
+<script src="assets/javascript/script.js"></script>
+</body>
 
 </html>

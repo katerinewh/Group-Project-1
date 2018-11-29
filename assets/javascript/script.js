@@ -1,23 +1,26 @@
 
 // Initialize Firebase
-var config = {
-  apiKey: "AIzaSyAF-QwmxCwFtt4nG9dbHSK0R1wAayP0q1c",
-  authDomain: "fir-chat-application-3056a.firebaseapp.com",
-  databaseURL: "https://fir-chat-application-3056a.firebaseio.com",
-  projectId: "fir-chat-application-3056a",
-  storageBucket: "fir-chat-application-3056a.appspot.com",
-  messagingSenderId: "870161544825"
-};
-firebase.initializeApp(config);
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAakeEevKf-1RdnnBLDYpcOSZT9sVEoE8o",
+    authDomain: "group-project-firebase.firebaseapp.com",
+    databaseURL: "https://group-project-firebase.firebaseio.com",
+    projectId: "group-project-firebase",
+    storageBucket: "group-project-firebase.appspot.com",
+    messagingSenderId: "423956817562"
+  };
+  firebase.initializeApp(config);
 
 
-
-
+// button on-click event
+$("#send-user-info").on("click", function(){
+  loginNew();
+});
 function loginNew() {
   var email=$("#email").val().trim();
   var password=$("#password").val().trim();
   // Log the user in via Firebase
-  var provider = new firebase.auth();
+  // var provider = new firebase.auth();
   // firebase.auth().signInWithPopup(provider).catch(function(error) {
   firebase.auth().createUserWithEmailAndPassword(email, password)
     .catch(function (err) {
