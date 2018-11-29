@@ -67,6 +67,9 @@ $(document).on('click', '.card', function (event) {
 $('.answer-question').on('submit', function (event) {
     event.preventDefault()
     var answer = $('#answer').val()
+    var newAnswer = $('<p>')
+            newAnswer.text(answer);
+            $('.answers').append(newAnswer)
 
     database.ref('/' + key + '/answers').push({
         answer: answer
