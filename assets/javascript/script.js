@@ -14,6 +14,12 @@ $(document).ready(function () {
     var database = firebase.database();
 
     // Alex code start
+
+    // To do: rearrange text in job info modal
+    // create dynamic variable (see line 81)
+    // find way to delete job postings by user login.
+    // have separate div to show entries user has posted
+    
     $("#post-btn").on("click", function (event) {
 
         event.preventDefault();
@@ -75,11 +81,14 @@ $(document).ready(function () {
             var jobDescriptionSpan = $("#description-span");
             var jobContactSpan = $("#contact-span");
             var jobLinkSpan = $("#link-span");
-            // Possible to create variable on the condition that address value !== undefined.
-            // 
+            // ?Possible to create variable on the condition that address value !== undefined.
+            // If no specific address is given in input field, use location input 
+            // Or find way to make input field required
+           
             var googleMapsUrl = `https://www.google.com/maps/embed/v1/place?q=${addressSnapshot}&key=AIzaSyBSvWzj-nolifiqWXXRDit4tlhOKifsIAs`;
             
             $("#google-maps").attr('src', googleMapsUrl);
+
 
             jobHeaderSpan.html(modalTitle);
             jobCompanySpan.html(modalCompany);

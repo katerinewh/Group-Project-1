@@ -28,13 +28,8 @@ textarea {
 }
 
 #job-btn {
-    border: 2px;
-    border-style: solid;
-    border-color: grey;
+    border-bottom: 1px solid grey;
     margin: 2px;
-    border-radius: 2px;
-    padding: 5px;
-    
 }
 
 #job-listing-header {
