@@ -113,7 +113,7 @@ $(document).ready(function () {
     
     // Kat's Code Start
   // CREATE A REFERENCE TO FIREBASE
-  var messagesRef = new Firebase('https://ctu00d06e16.firebaseio-demo.com/');
+//   var messagesRef = new Firebase('https://ctu00d06e16.firebaseio-demo.com/');
   // REGISTER DOM ELEMENTS
   var messageField = $('#messageInput');
   var nameField = $('#nameInput');
@@ -125,15 +125,14 @@ $(document).ready(function () {
       var username = nameField.val();
       var message = messageField.val();
       //SAVE DATA TO FIREBASE AND EMPTY FIELD
-      messagesRef.push({name:username, text:message});
+      database.ref("/chat").push({name:username, text:message});
       messageField.val('');
     }
   });
-
   // Add a callback that is triggered for each chat message.
-  messagesRef.limitToLast(2).on('child_added', function (snapshot) {
+    database.ref("/chat").on('child_added', function (childSnapshot) {
     //GET DATA
-    var data = snapshot.val();
+    var data = childSnapshot.val()
     var username = data.name || "anonymous";
     var message = data.text;
     //CREATE ELEMENTS MESSAGE & SANITIZE TEXT
