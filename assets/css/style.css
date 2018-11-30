@@ -3,6 +3,19 @@
     width: 500px;
 }
 
+#chat-jumbo {
+    opacity: .9;
+}
+
+body {
+    background-image: url("http://www.twitrcovers.com/wp-content/uploads/2013/04/Sunset-Cityscapes-l.jpg");
+    background-size: cover;
+}
+
+.container {
+    margin-top: 80px;
+}
+
 
 .modal-content{
     overflow: auto;

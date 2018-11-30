@@ -24,15 +24,32 @@
 </head>
 
 <body>
-  <a href="./QA.html"><button>Go to Q&A</button></a>
-  <!-- Display Job listings as divs (buttons that will open up more info)-->
-  <div class="card" style="width: 20rem;" id="listing-div-id">
-    <div class="card-header" id="job-listing-header">
-      Job Listings
-    </div>
-    <div class="card-body" id="job-links-display"></div>
-  </div>
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-md-6.5 col-md-offset-3.5" id="chat-bod" >
+        <div class="alert alert-danger" id="chat-jumbo" role="alert">
+          <div class="card"  style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Live Chat</h5>
 
+              <div class='example-chat-toolbar'>
+                <label for="nameInput">Username:</label>
+                <input type='text' id='nameInput' placeholder='enter a username...'>
+              </div>
+
+
+              <ul id='example-messages' class="example-chat-messages"></ul>
+
+              <footer>
+                <label for="messageInput">Message:</label>
+                <input type='text' id='messageInput' placeholder='Type a message...'>
+              </footer>
+            </div>
+          </div>
+        </div>
+    </div>
+        
 
     <!-- Empty modal to display job info on click -->
     <div id="job-info-modal" class="modal" tabindex="-1" role="dialog">
@@ -135,137 +152,190 @@
 
             </div>
         </div>
+
       </div>
-    </div>
-  </div>
-
-
-  <!-- Modal for job form (opens onclick "Add your posting button") -->
-  <div class="modal fade" id="job-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <h3 class="modal-title" id="exampleModalLongTitle">Job Description</h3>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-
-        <div class="modal-body">
-
-          <form>
-            <div class="form-group">
-              <label for="job-title">Job Title</label>
-              <input type="text" class="form-control" id="title-input" placeholder="Full-Stack Developer">
+      <div class="row">
+        <div class="col-md-6">
+            <div class="alert alert-danger" id="chat-jumbo" role="alert">
+          <!-- Display Job listings as divs (buttons that will open up more info)-->
+          <div class="card" style="width: 20rem;" id="listing-div-id">
+            <div class="card-header" id="job-listing-header">
+              Job Listings
             </div>
+            <div class="card-body" id="job-links-display"></div>
+          </div>
 
-            <div class="form-group">
-              <label for="location">Location</label>
-              <input type="text" class="form-control" id="location-input" placeholder="San Diego, CA">
-            </div>
 
-            <label class="mr-sm-2" for="inlineFormCustomSelect">Part/Full-time</label>
-            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="time-input">
-              <option selected>Choose...</option>
-              <option value="Part-time">Part-time</option>
-              <option value="Full-time">Full-time</option>
-            </select>
+          <!-- Empty modal to display job info on click -->
+          <div id="job-info-modal" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header-div text-center">
 
-            <div class="form-group">
-              <label for="description">Description</label>
-              <textarea class="form-control" id="description-input" rows="3"></textarea>
-            </div>
-
-            <div class="form-group">
-              <label class="sr-only" for="posting-link">Posting Link</label>
-              <div class="input-group mb-2">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">http://</div>
                 </div>
-                <input type="text" class="form-control" id="link-input" placeholder="www.yourjob.com">
+                <div class="modal-body">
+                  <span id="location-span"></span>
+                  <p>Job Type:</p><span id="job-type-span"></span>
+                  <p>Description:</p><span id="description-span"></span>
+                  <p>Contact:</p><span id="contact-span"></span>
+                  <p>Link:</p><span id="link-span"></span>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Modal for job form (opens onclick "Add your posting button") -->
+          <div class="modal fade" id="job-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+
+                <div class="modal-header">
+                  <h3 class="modal-title" id="exampleModalLongTitle">Job Description</h3>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+
+                <div class="modal-body">
+
+                  <form>
+                    <div class="form-group">
+                      <label for="job-title">Job Title</label>
+                      <input type="text" class="form-control" id="title-input" placeholder="Full-Stack Developer">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="location">Location</label>
+                      <input type="text" class="form-control" id="location-input" placeholder="San Diego, CA">
+                    </div>
+
+                    <label class="mr-sm-2" for="inlineFormCustomSelect">Part/Full-time</label>
+                    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="time-input">
+                      <option selected>Choose...</option>
+                      <option value="Part-time">Part-time</option>
+                      <option value="Full-time">Full-time</option>
+                    </select>
+
+                    <div class="form-group">
+                      <label for="description">Description</label>
+                      <textarea class="form-control" id="description-input" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="sr-only" for="posting-link">Posting Link</label>
+                      <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">http://</div>
+                        </div>
+                        <input type="text" class="form-control" id="link-input" placeholder="www.yourjob.com">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="email-label">Contact</label>
+                      <input type="email" class="form-control" id="contact-input" aria-describedby="emailHelp"
+                        placeholder="business@email.com">
+                    </div>
+
+                  </form>
+
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" id="post-btn">Post Job</button>
+                </div>
+
               </div>
             </div>
 
-            <div class="form-group">
-              <label for="email-label">Contact</label>
-              <input type="email" class="form-control" id="contact-input" aria-describedby="emailHelp" placeholder="business@email.com">
-            </div>
+          </div>
 
-          </form>
-
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="post-btn">Post Job</button>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-
-  <!-- For button and modal (BS embedded functionality) -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#job-modal" id="add-job-btn">
-    Add your posting.
-  </button>
-
-  <div class="modal fade" id="job-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Job Description</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+          <!-- For button and modal (BS embedded functionality) -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#job-modal" id="add-job-btn">
+            Add your posting.
           </button>
+
+          <div class="modal fade" id="job-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Job Description</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+
+                <div class="modal-body">
+
+                  <form>
+                    <div class="form-group">
+                      <label for="job-title">Job Title</label>
+                      <input type="text" class="form-control" id="title-input" placeholder="Full-Stack Developer">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="location">Location</label>
+                      <input type="text" class="form-control" id="location-input" placeholder="San Diego, CA">
+                    </div>
+
+                    <label class="mr-sm-2" for="inlineFormCustomSelect">Part/Full-time</label>
+                    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="time-input">
+                      <option selected>Choose...</option>
+                      <option value="1">Part-time</option>
+                      <option value="2">Full-time</option>
+                    </select>
+
+                    <div class="form-group">
+                      <label for="description">Description</label>
+                      <textarea class="form-control" id="description-input" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="posting-link">Posting Link</label>
+                      <input type="text" class="form-control" id="link-input" placeholder="www.yourjob.com">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="email-label">Contact</label>
+                      <input type="email" class="form-control" id="contact-input" aria-describedby="emailHelp"
+                        placeholder="Enter email">
+                    </div>
+
+                  </form>
+
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" id="post-btn">Save changes</button>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+          </div>
         </div>
 
-        <div class="modal-body">
 
-          <form>
-            <div class="form-group">
-              <label for="job-title">Job Title</label>
-              <input type="text" class="form-control" id="title-input" placeholder="Full-Stack Developer">
-            </div>
-
-            <div class="form-group">
-              <label for="location">Location</label>
-              <input type="text" class="form-control" id="location-input" placeholder="San Diego, CA">
-            </div>
-
-            <label class="mr-sm-2" for="inlineFormCustomSelect">Part/Full-time</label>
-            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="time-input">
-              <option selected>Choose...</option>
-              <option value="1">Part-time</option>
-              <option value="2">Full-time</option>
-            </select>
-
-            <div class="form-group">
-              <label for="description">Description</label>
-              <textarea class="form-control" id="description-input" rows="3"></textarea>
-            </div>
-
-            <div class="form-group">
-              <label for="posting-link">Posting Link</label>
-              <input type="text" class="form-control" id="link-input" placeholder="www.yourjob.com">
-            </div>
-
-            <div class="form-group">
-              <label for="email-label">Contact</label>
-              <input type="email" class="form-control" id="contact-input" aria-describedby="emailHelp" placeholder="Enter email">
-            </div>
-
-          </form>
-
+        <div class="col-md-6">
+            <div class="alert alert-danger" id="chat-jumbo" role="alert">
+          <a href="./QA.html"><button>Go to Q&A</button></a>
         </div>
 
+        </div>
       </div>
     </div>
-  </div>
+
+
   
 <!-- CHAT MARKUP -->
   <div class="card" style="width: 18rem;">
@@ -299,7 +369,6 @@
       crossorigin="anonymous"></script>
 
     <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
-
 
     <script src="assets/javascript/script.js"></script>
 
