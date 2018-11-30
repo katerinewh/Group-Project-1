@@ -53,6 +53,7 @@ $(document).ready(function () {
 
     });
 
+
     database.ref("/job-listing").on("child_added", function (childSnapshot) {
 
         // Creates a button everytime user submits a job labeled 
@@ -98,8 +99,8 @@ $(document).ready(function () {
             jobLinkSpan.html(modalLink);
 
         });
+  });
 
-    });
 
     // Alex's code end
 
@@ -109,6 +110,41 @@ $(document).ready(function () {
 
 
     // Kat's Code Start
+
+ 
+  // CREATE A REFERENCE TO FIREBASE
+  var messagesRef = new Firebase('https://ctu00d06e16.firebaseio-demo.com/');
+  // REGISTER DOM ELEMENTS
+  var messageField = $('#messageInput');
+  var nameField = $('#nameInput');
+  var messageList = $('#example-messages');
+  // LISTEN FOR KEYPRESS EVENT
+  messageField.keypress(function (e) {
+    if (e.keyCode == 13) {
+      //FIELD VALUES
+      var username = nameField.val();
+      var message = messageField.val();
+      //SAVE DATA TO FIREBASE AND EMPTY FIELD
+      messagesRef.push({name:username, text:message});
+      messageField.val('');
+    }
+  });
+  // Add a callback that is triggered for each chat message.
+  messagesRef.limitToLast(2).on('child_added', function (snapshot) {
+    //GET DATA
+    var data = snapshot.val();
+    var username = data.name || "anonymous";
+    var message = data.text;
+    //CREATE ELEMENTS MESSAGE & SANITIZE TEXT
+    var messageElement = $("<li>");
+    var nameElement = $("<strong class='example-chat-username'></strong>")
+    nameElement.text(username);
+    messageElement.text(message).prepend(nameElement);
+    //ADD MESSAGE
+    messageList.append(messageElement)
+    //SCROLL TO BOTTOM OF MESSAGE LIST
+    messageList[0].scrollTop = messageList[0].scrollHeight;
+  });
 
     $("#send-user-info").on("click", function () {
         loginNew();
@@ -138,38 +174,12 @@ $(document).ready(function () {
                 console.log(err)
             });
     }
-    firebase.auth().onAuthStateChanged(function (user) {
-        // Once authenticated, instantiate Firechat with the logged in user
-        if (user) {
-            initChat(user);
-        }
-        // if (user) {
-        //   // If the user is logged in, set them as the Firechat user
-        //   chat.setUser(user.uid, "Anonymous" + user.uid.substr(10, 8));
-        // } else {
-        //   // If the user is not logged in, sign them in anonymously
-        //   firebase.auth().signInAnonymously().catch(function(error) {
-        //     console.log("Error signing user in anonymously:", error);
-        //   });
-        // }
-    });
 
-    function initChat(user) {
-        // Get a Firebase Database ref
-        var chatRef = firebase.database().ref("chat");
-
-        // Create a Firechat instance
-        var chat = new FirechatUI(chatRef, document.getElementById("firechat-wrapper"));
-
-        // Set the Firechat user
-        chat.setUser(user.uid, user.displayName);
-    }
-
-    // Kat's Code End
-
+  // Kat's Code End
 
 
 
 
 
 });
+
