@@ -18,8 +18,9 @@
     <script src="https://cdn.firebase.com/libs/firechat/3.0.1/firechat.min.js"></script>
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
     <title>Tril</title>
 </head>
@@ -39,19 +40,22 @@
     <div id="job-info-modal" class="modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header-div text-center">
-
+                <div class="modal-header-div text-left">
                 </div>
                 <div class="modal-body">
                     <span id="location-span"></span>
-                    <p>Job Type:</p><span id="job-type-span"></span>
-                    <p>Description:</p><span id="description-span"></span>
-                    <p>Contact:</p><span id="contact-span"></span>
-                    <p>Link:</p><span id="link-span"></span>
+                    <p id="company-name">Company Name:</p><span id="company-span"></span>
+                    <p id="job-type">Job Type:</p><span id="job-type-span"></span>
+                    <p id="description">Description:</p><span id="description-span"></span>
+                    <p id="contact">Contact:</p><span id="contact-span"></span>
+                    <p id="link">Link:</p><span id="link-span"></span>
+                    <iframe width="450" height="400" frameborder="1" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=ucsd%20extension&key=AIzaSyBSvWzj-nolifiqWXXRDit4tlhOKifsIAs" id="google-maps" allowfullscreen></iframe>
                 </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
+
             </div>
         </div>
     </div>
@@ -72,10 +76,15 @@
 
                 <div class="modal-body">
 
-                    <form>
+                    <form id="job-info-form">
                         <div class="form-group">
                             <label for="job-title">Job Title</label>
                             <input type="text" class="form-control" id="title-input" placeholder="Full-Stack Developer">
+                        </div>
+
+                        <div class="form-group">
+                                <label for="company">Company Name</label>
+                                <input type="text" class="form-control" id="company-input" placeholder="The Bee's Knees Industries">
                         </div>
 
                         <div class="form-group">
@@ -83,7 +92,13 @@
                             <input type="text" class="form-control" id="location-input" placeholder="San Diego, CA">
                         </div>
 
+                        <div class="form-group">
+                            <label for="address">Company Address</label>
+                            <input type="text" class="form-control" id="address-input" placeholder="One Microsoft Way, Redmond, WA 98052">
+                        </div>
+
                         <label class="mr-sm-2" for="inlineFormCustomSelect">Part/Full-time</label>
+
                         <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="time-input">
                             <option selected>Choose...</option>
                             <option value="Part-time">Part-time</option>
@@ -257,15 +272,15 @@
 
 
 
-        <!-- Javascript links jQuery, BSjQuery, firebase, ownJS -->
+        <!-- Javascript links jQuery, BSjQuery, firebase, ownJS, googlemaps API link -->
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
 
-    <script src="assets/javascript/script.js"></script>
 
+    <script src="assets/javascript/script.js"></script>
 
 
 </body>

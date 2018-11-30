@@ -13,14 +13,16 @@ $(document).ready(function () {
 
     var database = firebase.database();
 
-
     // Alex code start
     $("#post-btn").on("click", function (event) {
 
         event.preventDefault();
+        
         // Creates variables for every input field
         var titleInput = $("#title-input").val();
         var locationInput = $("#location-input").val();
+        var addressInput = $("#address-input").val();
+        var companyInput = $("#company-input").val();
         var timeInput = $("#time-input").val();
         var descriptionInput = $("#description-input").val();
         var linkInput = $("#link-input").val();
@@ -32,11 +34,17 @@ $(document).ready(function () {
         database.ref("/job-listing").push({
             title: titleInput,
             location: locationInput,
+            address: addressInput,
+            company: companyInput,
             time: timeInput,
             description: descriptionInput,
             link: linkText,
             contact: contactInput
         });
+
+        $('#job-modal').modal('toggle');
+        $("#job-info-form").trigger("reset");
+
     });
 
     database.ref("/job-listing").on("child_added", function (childSnapshot) {
@@ -46,9 +54,10 @@ $(document).ready(function () {
         $("#job-links-display").append(jobBtn);
         jobBtn.attr("id", "job-btn");
         jobBtn.append("<p>" + childSnapshot.val().location + "</p>");
-
+        var addressSnapshot = childSnapshot.val().address;
         var modalTitle = $("<h1>" + childSnapshot.val().title + "</h1>");
         var modalLocation = $("<p>" + childSnapshot.val().location + "</p>");
+        var modalCompany = $("<p>" + childSnapshot.val().company + "</p>");
         var modalTime = $("<p>" + childSnapshot.val().time + "</p>");
         var modalDescription = $("<p>" + childSnapshot.val().description + "<p>");
         var modalContact = $("<p>" + childSnapshot.val().contact + "</p>");
@@ -60,17 +69,20 @@ $(document).ready(function () {
             event.preventDefault();
             var emptyModal = $("#job-info-modal");
             emptyModal.modal('show');
-
-
             var jobHeaderSpan = $(".modal-header-div");
-            var jobLocationSpan = $("#location-span")
+            var jobCompanySpan = $("#company-span")
             var jobTypeSpan = $("#job-type-span");
             var jobDescriptionSpan = $("#description-span");
             var jobContactSpan = $("#contact-span");
             var jobLinkSpan = $("#link-span");
+            // Possible to create variable on the condition that address value !== undefined.
+            // 
+            var googleMapsUrl = `https://www.google.com/maps/embed/v1/place?q=${addressSnapshot}&key=AIzaSyBSvWzj-nolifiqWXXRDit4tlhOKifsIAs`;
+            
+            $("#google-maps").attr('src', googleMapsUrl);
 
             jobHeaderSpan.html(modalTitle);
-            jobLocationSpan.html(modalLocation);
+            jobCompanySpan.html(modalCompany);
             jobTypeSpan.html(modalTime);
             jobDescriptionSpan.html(modalDescription);
             jobContactSpan.html(modalContact);
@@ -79,6 +91,7 @@ $(document).ready(function () {
         });
 
     });
+
     // Alex's code end
 
 
@@ -87,7 +100,7 @@ $(document).ready(function () {
 
 
     // Kat's Code Start
-    
+
     $("#send-user-info").on("click", function () {
         loginNew();
     });

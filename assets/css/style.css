@@ -9,6 +9,20 @@
     margin: 5px;
 }
 
+#company-name, #job-type, #description, #contact, #link {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.modal-header-div {
+    margin-left: 10px;
+}
+
+#google-maps {
+    width: 100%;
+    text-align: center;
+}
+
 textarea {
     resize: none;
 }
