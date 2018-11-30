@@ -41,3 +41,10 @@ textarea {
     text-decoration: underline;
     cursor: pointer;
 }
+
+#example-messages {
+    word-wrap: break-word;
+    height: 200px;
+    width: 200px;
+    overflow: auto;
+}
