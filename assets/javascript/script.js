@@ -99,10 +99,6 @@ $(document).ready(function () {
 
 
 
-
-
-
-    
     
 // Kat's Code Start
   var messageField = $('#messageInput');
@@ -126,13 +122,11 @@ $(document).ready(function () {
     var username = data.name || "anonymous";
     var message = data.text;
     //CREATE ELEMENTS MESSAGE & SANITIZE TEXT
-    var messageElement = $("<li>");
+    var messageElement = $("<p>");
     var nameElement = $("<strong class='example-chat-username'></strong>")
-    console.log(username + ":" + message);
     nameElement.text(username + ": ");
     messageElement.text(message).prepend(nameElement);
     //ADD MESSAGE
-    
     messageList.append(messageElement)
     //SCROLL TO BOTTOM OF MESSAGE LIST
     messageList[0].scrollTop = messageList[0].scrollHeight;
