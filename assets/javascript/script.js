@@ -16,8 +16,7 @@ $(document).ready(function () {
     // Alex code start
 
     // To do: rearrange text in job info modal
-    // create dynamic variable (see line 81)
-    // find way to delete job postings by user login.
+    // find way to delete job postings.
     // have separate div to show entries user has posted
     
     $("#post-btn").on("click", function (event) {
@@ -61,7 +60,7 @@ $(document).ready(function () {
         $("#job-links-display").append(jobBtn);
         jobBtn.attr("id", "job-btn");
         jobBtn.append("<p>" + childSnapshot.val().location + "</p>");
-        var addressSnapshot = childSnapshot.val().address;
+        var addressSnapshot = childSnapshot.val().address || childSnapshot.val().location;
         var modalTitle = childSnapshot.val().title;
         var modalLocation =  childSnapshot.val().location;
         var modalCompany = childSnapshot.val().company;
@@ -82,10 +81,6 @@ $(document).ready(function () {
             var jobDescriptionSpan = $("#description-span");
             var jobContactSpan = $("#contact-span");
             var jobLinkSpan = $("#link-span");
-            // ?Possible to create variable on the condition that address value !== undefined.
-            // If no specific address is given in input field, use location input 
-            // Or find way to make input field required
-           
             var googleMapsUrl = `https://www.google.com/maps/embed/v1/place?q=${addressSnapshot}&key=AIzaSyBSvWzj-nolifiqWXXRDit4tlhOKifsIAs`;
             
             $("#google-maps").attr('src', googleMapsUrl);
@@ -100,9 +95,7 @@ $(document).ready(function () {
 
         });
   });
-
-
-    // Alex's code end
+// Alex's code end
 
 
 
@@ -111,10 +104,7 @@ $(document).ready(function () {
 
     
     
-    // Kat's Code Start
-  // CREATE A REFERENCE TO FIREBASE
-//   var messagesRef = new Firebase('https://ctu00d06e16.firebaseio-demo.com/');
-  // REGISTER DOM ELEMENTS
+// Kat's Code Start
   var messageField = $('#messageInput');
   var nameField = $('#nameInput');
   var messageList = $('#example-messages');
@@ -138,7 +128,8 @@ $(document).ready(function () {
     //CREATE ELEMENTS MESSAGE & SANITIZE TEXT
     var messageElement = $("<li>");
     var nameElement = $("<strong class='example-chat-username'></strong>")
-    nameElement.text(username);
+    console.log(username + ":" + message);
+    nameElement.text(username + ": ");
     messageElement.text(message).prepend(nameElement);
     //ADD MESSAGE
     
