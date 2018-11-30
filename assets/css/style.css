@@ -1,6 +1,5 @@
-#firechat #firechat-tabs {
-    height: 375px;
-    width: 500px;
+.navbar {
+    background: black;
 }
 
 #chat-jumbo {
