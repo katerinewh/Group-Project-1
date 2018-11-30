@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <title>Trilogy Job Search</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -20,8 +21,6 @@
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-
-  <title>Tril</title>
 </head>
 
 <body>
@@ -44,10 +43,10 @@
                 <div class="modal-body">
                     <span id="location-span"></span>
                     <span id="company-span"></span>
-                    <p id="job-type">Job Type:</p><span id="job-type-span"></span>
-                    <p id="description">Description:</p><span id="description-span"></span>
-                    <p id="contact">Contact:</p><span id="contact-span"></span>
-                    <p id="link">Link:</p><span id="link-span"></span>
+                    <p id="job-type">Job Type:<span id="job-type-span"></span></p>
+                    <p id="description">Description:<span id="description-span"></span></p>
+                    <p id="contact">Contact:<span id="contact-span"></span></p>
+                    <p id="link">Link:<span id="link-span"></span></p>
                     <iframe width="450" height="400" frameborder="1" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=ucsd%20extension&key=AIzaSyBSvWzj-nolifiqWXXRDit4tlhOKifsIAs" id="google-maps" allowfullscreen></iframe>
                 </div>
 
@@ -267,68 +266,24 @@
       </div>
     </div>
   </div>
-
-
-  <!-- FIREBASE LOGIN HERE
-  <div class="modal fade" id="modalSubscriptionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header text-center">
-          <h4 class="modal-title w-100 font-weight-bold">Login</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body mx-3">
-          <div class="md-form mb-5">
-            <i class="fa fa-user prefix grey-text"></i>
-            <input type="text" id="name" class="form-control validate">
-            <label data-error="wrong" data-success="right" for="form3">Your name</label>
-          </div>
-
-          <div class="md-form mb-4">
-            <i class="fa fa-envelope prefix grey-text"></i>
-            <input type="email" id="email" class="form-control validate">
-            <label data-error="wrong" data-success="right" for="form2">Your email</label>
-          </div>
-
-          <div class="md-form mb-4">
-            <i class="fa fa-envelope prefix grey-text"></i>
-            <input type="password" id="password" class="form-control validate">
-            <label data-error="wrong" data-success="right" for="form2">Password</label>
-          </div>
-        </div>
-        <div class="modal-footer d-flex justify-content-center">
-          <button class="btn btn-indigo" id="send-user-info">Send <i class="fa fa-paper-plane-o ml-1"></i></button>
-        </div>
-      </div>
-    </div>
-  </div>
-<--button-->
-  <!-- <div class="text-center">
-    <button class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalSubscriptionForm">Log in
-      with Firebase</button>
-  </div>   -->
-  <!-- FIRECHAT CODE HERE -->
   
 <!-- CHAT MARKUP -->
-<div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">Live Chat</h5>
+  <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Live Chat</h5>
 
-  <div class='example-chat-toolbar'>
-    <label for="nameInput">Username:</label>
-    <input type='text' id='nameInput' placeholder='enter a username...'>
+    <div class='example-chat-toolbar'>
+      <label for="nameInput">Username:</label>
+      <input type='text' id='nameInput' placeholder='enter a username...'>
+    </div>
+    
+    <ul id='example-messages' class="example-chat-messages"></ul>
+
+    <footer>
+        <label for="messageInput">Message:</label>
+      <input type='text' id='messageInput'  placeholder='Type a message...'>
+    </footer>
   </div>
-  
-  <ul id='example-messages' class="example-chat-messages"></ul>
-
-  <footer>
-      <label for="messageInput">Message:</label>
-    <input type='text' id='messageInput'  placeholder='Type a message...'>
-  </footer>
-</div>
 
 
 

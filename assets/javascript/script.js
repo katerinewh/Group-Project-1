@@ -62,13 +62,13 @@ $(document).ready(function () {
         jobBtn.attr("id", "job-btn");
         jobBtn.append("<p>" + childSnapshot.val().location + "</p>");
         var addressSnapshot = childSnapshot.val().address;
-        var modalTitle = $("<h1>" + childSnapshot.val().title + "</h1>");
-        var modalLocation = $("<p>" + childSnapshot.val().location + "</p>");
-        var modalCompany = $("<p>" + childSnapshot.val().company + "</p>");
-        var modalTime = $("<p>" + childSnapshot.val().time + "</p>");
-        var modalDescription = $("<p>" + childSnapshot.val().description + "<p>");
-        var modalContact = $("<p>" + childSnapshot.val().contact + "</p>");
-        var modalLink = $(`<p><a href='${childSnapshot.val().link}'>For more info</a></p>`);
+        var modalTitle = childSnapshot.val().title;
+        var modalLocation =  childSnapshot.val().location;
+        var modalCompany = childSnapshot.val().company;
+        var modalTime = childSnapshot.val().time;
+        var modalDescription = childSnapshot.val().description;
+        var modalContact = childSnapshot.val().contact;
+        var modalLink = $(`<a href='${childSnapshot.val().link}'>For more info</a>`);
 
 
 
@@ -109,9 +109,9 @@ $(document).ready(function () {
 
 
 
+    
+    
     // Kat's Code Start
-
- 
   // CREATE A REFERENCE TO FIREBASE
   var messagesRef = new Firebase('https://ctu00d06e16.firebaseio-demo.com/');
   // REGISTER DOM ELEMENTS
@@ -129,6 +129,7 @@ $(document).ready(function () {
       messageField.val('');
     }
   });
+
   // Add a callback that is triggered for each chat message.
   messagesRef.limitToLast(2).on('child_added', function (snapshot) {
     //GET DATA
@@ -141,39 +142,12 @@ $(document).ready(function () {
     nameElement.text(username);
     messageElement.text(message).prepend(nameElement);
     //ADD MESSAGE
+    
     messageList.append(messageElement)
     //SCROLL TO BOTTOM OF MESSAGE LIST
     messageList[0].scrollTop = messageList[0].scrollHeight;
   });
 
-    $("#send-user-info").on("click", function () {
-        loginNew();
-    });
-    function loginNew() {
-        var email = $("#email").val().trim();
-        var password = $("#password").val().trim();
-        // Log the user in via Firebase
-        // var provider = new firebase.auth();
-        // firebase.auth().signInWithPopup(provider).catch(function(error) {
-        firebase.auth().createUserWithEmailAndPassword(email, password)
-            .catch(function (err) {
-                console.log("Error authenticating user:", error);
-            });
-    }
-    // Sign in existing user
-    function loginExistingUser() {
-        firebase.auth().signInWithEmailAndPassword(email, password)
-            .catch(function (err) {
-                // Handle errors
-            });
-    }
-    function signOut() {
-        // Sign out user
-        firebase.auth().signOut()
-            .catch(function (err) {
-                console.log(err)
-            });
-    }
 
   // Kat's Code End
 
