@@ -9,18 +9,27 @@
     margin: 5px;
 }
 
+#company-name, #job-type, #description, #contact, #link {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.modal-header-div {
+    margin-left: 10px;
+}
+
+#google-maps {
+    width: 100%;
+    text-align: center;
+}
+
 textarea {
     resize: none;
 }
 
 #job-btn {
-    border: 2px;
-    border-style: solid;
-    border-color: grey;
+    border-bottom: 1px solid grey;
     margin: 2px;
-    border-radius: 2px;
-    padding: 5px;
-    
 }
 
 #job-listing-header {

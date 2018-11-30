@@ -2,31 +2,26 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!-- jQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
 
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
-  <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
-  <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
-  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
+    <!-- Firechat -->
+    <link rel="stylesheet" href="https://cdn.firebase.com/libs/firechat/3.0.1/firechat.min.css" />
+    <script src="https://cdn.firebase.com/libs/firechat/3.0.1/firechat.min.js"></script>
 
-  <!-- Firechat -->
-  <link rel="stylesheet" href="https://cdn.firebase.com/libs/firechat/3.0.1/firechat.min.css" />
-  <script src="https://cdn.firebase.com/libs/firechat/3.0.1/firechat.min.js"></script>
+    <!-- Stylesheets -->
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-  <!-- Stylesheets -->
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-    crossorigin="anonymous">
-  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-    crossorigin="anonymous"> -->
-</head>
-
-<title>Tril</title>
+  <title>Tril</title>
 </head>
 
 <body>
@@ -40,22 +35,106 @@
   </div>
 
 
-  <!-- Empty modal to display job info on click -->
-  <div id="job-info-modal" class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header-div text-center">
+    <!-- Empty modal to display job info on click -->
+    <div id="job-info-modal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header-div text-left">
+                </div>
+                <div class="modal-body">
+                    <span id="location-span"></span>
+                    <span id="company-span"></span>
+                    <p id="job-type">Job Type:</p><span id="job-type-span"></span>
+                    <p id="description">Description:</p><span id="description-span"></span>
+                    <p id="contact">Contact:</p><span id="contact-span"></span>
+                    <p id="link">Link:</p><span id="link-span"></span>
+                    <iframe width="450" height="400" frameborder="1" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=ucsd%20extension&key=AIzaSyBSvWzj-nolifiqWXXRDit4tlhOKifsIAs" id="google-maps" allowfullscreen></iframe>
+                </div>
 
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
         </div>
-        <div class="modal-body">
-          <span id="location-span"></span>
-          <p>Job Type:</p><span id="job-type-span"></span>
-          <p>Description:</p><span id="description-span"></span>
-          <p>Contact:</p><span id="contact-span"></span>
-          <p>Link:</p><span id="link-span"></span>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    </div>
+
+
+    <!-- Modal for job form (opens onclick "Add your posting button") -->
+    <div class="modal fade" id="job-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLongTitle">Job Description</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+
+                    <form id="job-info-form">
+                        <div class="form-group">
+                            <label for="job-title">Job Title</label>
+                            <input type="text" class="form-control" id="title-input" placeholder="Full-Stack Developer">
+                        </div>
+
+                        <div class="form-group">
+                                <label for="company">Company Name</label>
+                                <input type="text" class="form-control" id="company-input" placeholder="The Bee's Knees Industries">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" class="form-control" id="location-input" placeholder="San Diego, CA">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Company Address</label>
+                            <input type="text" class="form-control" id="address-input" placeholder="One Microsoft Way, Redmond, WA 98052">
+                        </div>
+
+                        <label class="mr-sm-2" for="inlineFormCustomSelect">Part/Full-time</label>
+
+                        <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="time-input">
+                            <option selected>Choose...</option>
+                            <option value="Part-time">Part-time</option>
+                            <option value="Full-time">Full-time</option>
+                        </select>
+
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" id="description-input" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="sr-only" for="posting-link">Posting Link</label>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">http://</div>
+                                </div>
+                                <input type="text" class="form-control" id="link-input" placeholder="www.yourjob.com">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email-label">Contact</label>
+                            <input type="email" class="form-control" id="contact-input" aria-describedby="emailHelp"
+                                placeholder="business@email.com">
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="post-btn">Post Job</button>
+                </div>
+
+            </div>
         </div>
       </div>
     </div>
@@ -185,12 +264,6 @@
 
         </div>
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="post-btn">Save changes</button>
-        </div>
-
-
       </div>
     </div>
   </div>
@@ -257,23 +330,21 @@
   </footer>
 </div>
 
-<!-- CHAT JAVACRIPT -->
-<!-- <script>
-
-</script> -->
 
 
     <!-- Javascript links jQuery, BSjQuery, firebase, ownJS -->
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
       crossorigin="anonymous"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
       crossorigin="anonymous"></script>
 
     <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
 
-    <script src="assets/javascript/script.js"></script>
 
+    <script src="assets/javascript/script.js"></script>
 
 
 </body>
