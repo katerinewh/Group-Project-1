@@ -1,5 +1,6 @@
 .navbar {
-    background: black;
+    background: #eff5ff;
+    color: black;
 }
 
 #chat-jumbo {
@@ -21,18 +22,26 @@ body {
     margin: 5px;
 }
 
-#company-name, #job-type, #description, #contact, #link {
-    font-weight: bold;
-    font-size: 14px;
-}
+
 
 .modal-header-div {
-    margin-left: 10px;
+    margin-left: 15px;
+    margin-top: 15px;
+    font-size: 32px;
+
 }
 
 #google-maps {
     width: 100%;
     text-align: center;
+}
+
+#company-span {
+    padding-bottom: 50px;
+}
+
+#job-type {
+    margin-top: 15px;
 }
 
 textarea {

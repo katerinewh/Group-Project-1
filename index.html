@@ -17,14 +17,15 @@
 
 <body>
 
-  <img src="/assets/logo.png" width="30px" height="30px">
-  <nav class="navbar navbar-dark bg-dark">
-    <h1>Title</h1>
-    
-  </nav>  
+  
+
   
   
   <div class="container">
+      <nav class="navbar">
+        <h1><img src="./assets/logo-2.png">Title</h1>
+      </nav>  
+   
     <div class="row">
       
       <div class="col-md-6.5 col-md-offset-3.5" id="chat-bod" >
@@ -56,14 +57,15 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header-div text-left">
+                  <h1 id="modal-header-id"></h1>
                 </div>
                 <div class="modal-body">
-                    <span id="location-span"></span>
                     <span id="company-span"></span>
-                    <p id="job-type">Job Type:<span id="job-type-span"></span></p>
-                    <p id="description">Description:<span id="description-span"></span></p>
-                    <p id="contact">Contact:<span id="contact-span"></span></p>
-                    <p id="link">Link:<span id="link-span"></span></p>
+                  
+                    <p id="job-type"><b>Job Type: </b><span id="job-type-span"></span></p>
+                    <p id="description"><b>Description: </b><span id="description-span"></span></p>
+                    <p id="contact"><b>Contact: </b><span id="contact-span"></span></p>
+                    <p id="link"><b>Link: </b><span id="link-span"></span></p>
                     <iframe width="450" height="400" frameborder="1" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=ucsd%20extension&key=AIzaSyBSvWzj-nolifiqWXXRDit4tlhOKifsIAs" id="google-maps" allowfullscreen></iframe>
                 </div>
 
@@ -104,7 +106,7 @@
 
                         <div class="form-group">
                             <label for="location">Location</label>
-                            <input type="text" class="form-control" id="location-input" placeholder="San Diego, CA">
+                            <input type="text" class="form-control" id="location-input" placeholder="Redmond, WA">
                         </div>
 
                         <div class="form-group">
