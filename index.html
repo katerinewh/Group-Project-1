@@ -2,265 +2,273 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
-    <!-- Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
-    <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+  <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
 
-    <!-- Firechat -->
-    <link rel="stylesheet" href="https://cdn.firebase.com/libs/firechat/3.0.1/firechat.min.css" />
-    <script src="https://cdn.firebase.com/libs/firechat/3.0.1/firechat.min.js"></script>
+  <!-- Firechat -->
+  <link rel="stylesheet" href="https://cdn.firebase.com/libs/firechat/3.0.1/firechat.min.css" />
+  <script src="https://cdn.firebase.com/libs/firechat/3.0.1/firechat.min.js"></script>
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous"> -->
+</head>
 
-    <title>Tril</title>
+<title>Tril</title>
 </head>
 
 <body>
-    <a href="./QA.html"><button>Go to Q&A</button></a>
-    <!-- Display Job listings as divs (buttons that will open up more info)-->
-    <div class="card" style="width: 20rem;" id="listing-div-id">
-        <div class="card-header" id="job-listing-header">
-            Job Listings
-        </div>
-        <div class="card-body" id="job-links-display"></div>
+  <a href="./QA.html"><button>Go to Q&A</button></a>
+  <!-- Display Job listings as divs (buttons that will open up more info)-->
+  <div class="card" style="width: 20rem;" id="listing-div-id">
+    <div class="card-header" id="job-listing-header">
+      Job Listings
     </div>
+    <div class="card-body" id="job-links-display"></div>
+  </div>
 
 
-    <!-- Empty modal to display job info on click -->
-    <div id="job-info-modal" class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header-div text-center">
+  <!-- Empty modal to display job info on click -->
+  <div id="job-info-modal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header-div text-center">
 
-                </div>
-                <div class="modal-body">
-                    <span id="location-span"></span>
-                    <p>Job Type:</p><span id="job-type-span"></span>
-                    <p>Description:</p><span id="description-span"></span>
-                    <p>Contact:</p><span id="contact-span"></span>
-                    <p>Link:</p><span id="link-span"></span>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
+        </div>
+        <div class="modal-body">
+          <span id="location-span"></span>
+          <p>Job Type:</p><span id="job-type-span"></span>
+          <p>Description:</p><span id="description-span"></span>
+          <p>Contact:</p><span id="contact-span"></span>
+          <p>Link:</p><span id="link-span"></span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal for job form (opens onclick "Add your posting button") -->
+  <div class="modal fade" id="job-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLongTitle">Job Description</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+
+          <form>
+            <div class="form-group">
+              <label for="job-title">Job Title</label>
+              <input type="text" class="form-control" id="title-input" placeholder="Full-Stack Developer">
             </div>
-        </div>
-    </div>
 
-
-    <!-- Modal for job form (opens onclick "Add your posting button") -->
-    <div class="modal fade" id="job-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLongTitle">Job Description</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <div class="modal-body">
-
-                    <form>
-                        <div class="form-group">
-                            <label for="job-title">Job Title</label>
-                            <input type="text" class="form-control" id="title-input" placeholder="Full-Stack Developer">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="location">Location</label>
-                            <input type="text" class="form-control" id="location-input" placeholder="San Diego, CA">
-                        </div>
-
-                        <label class="mr-sm-2" for="inlineFormCustomSelect">Part/Full-time</label>
-                        <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="time-input">
-                            <option selected>Choose...</option>
-                            <option value="Part-time">Part-time</option>
-                            <option value="Full-time">Full-time</option>
-                        </select>
-
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <textarea class="form-control" id="description-input" rows="3"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="sr-only" for="posting-link">Posting Link</label>
-                            <div class="input-group mb-2">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">http://</div>
-                                </div>
-                                <input type="text" class="form-control" id="link-input" placeholder="www.yourjob.com">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email-label">Contact</label>
-                            <input type="email" class="form-control" id="contact-input" aria-describedby="emailHelp"
-                                placeholder="business@email.com">
-                        </div>
-
-                    </form>
-
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="post-btn">Post Job</button>
-                </div>
-
+            <div class="form-group">
+              <label for="location">Location</label>
+              <input type="text" class="form-control" id="location-input" placeholder="San Diego, CA">
             </div>
-        </div>
-        
-    </div>
 
-        <!-- For button and modal (BS embedded functionality) -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#job-modal" id="add-job-btn">
-            Add your posting.
-    </button>
+            <label class="mr-sm-2" for="inlineFormCustomSelect">Part/Full-time</label>
+            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="time-input">
+              <option selected>Choose...</option>
+              <option value="Part-time">Part-time</option>
+              <option value="Full-time">Full-time</option>
+            </select>
 
-    <div class="modal fade" id="job-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-            aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Job Description</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <div class="modal-body">
-
-                    <form>
-                        <div class="form-group">
-                            <label for="job-title">Job Title</label>
-                            <input type="text" class="form-control" id="title-input" placeholder="Full-Stack Developer">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="location">Location</label>
-                            <input type="text" class="form-control" id="location-input" placeholder="San Diego, CA">
-                        </div>
-
-                        <label class="mr-sm-2" for="inlineFormCustomSelect">Part/Full-time</label>
-                        <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="time-input">
-                            <option selected>Choose...</option>
-                            <option value="1">Part-time</option>
-                            <option value="2">Full-time</option>
-                        </select>
-
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <textarea class="form-control" id="description-input" rows="3"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="posting-link">Posting Link</label>
-                            <input type="text" class="form-control" id="link-input" placeholder="www.yourjob.com">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email-label">Contact</label>
-                            <input type="email" class="form-control" id="contact-input" aria-describedby="emailHelp"
-                                    placeholder="Enter email">
-                        </div>
-
-                    </form>
-
-                </div>
-                    
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="post-btn">Save changes</button>
-                </div>
-
-
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea class="form-control" id="description-input" rows="3"></textarea>
             </div>
-        </div>
-    </div>
 
-
-        <!-- CHAT HTML HERE -->
-        <div class="modal fade" id="modalSubscriptionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header text-center">
-                        <h4 class="modal-title w-100 font-weight-bold">Login</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body mx-3">
-                        <div class="md-form mb-5">
-                            <i class="fa fa-user prefix grey-text"></i>
-                            <input type="text" id="name" class="form-control validate">
-                            <label data-error="wrong" data-success="right" for="form3">Your name</label>
-                        </div>
-
-                        <div class="md-form mb-4">
-                            <i class="fa fa-envelope prefix grey-text"></i>
-                            <input type="email" id="email" class="form-control validate">
-                            <label data-error="wrong" data-success="right" for="form2">Your email</label>
-                        </div>
-
-                        <div class="md-form mb-4">
-                            <i class="fa fa-envelope prefix grey-text"></i>
-                            <input type="password" id="password" class="form-control validate">
-                            <label data-error="wrong" data-success="right" for="form2">Password</label>
-                        </div>
-                    </div>
-                    <div class="modal-footer d-flex justify-content-center">
-                        <button class="btn btn-indigo" id="send-user-info">Send <i class="fa fa-paper-plane-o ml-1"></i></button>
-                    </div>
+            <div class="form-group">
+              <label class="sr-only" for="posting-link">Posting Link</label>
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">http://</div>
                 </div>
+                <input type="text" class="form-control" id="link-input" placeholder="www.yourjob.com">
+              </div>
             </div>
+
+            <div class="form-group">
+              <label for="email-label">Contact</label>
+              <input type="email" class="form-control" id="contact-input" aria-describedby="emailHelp" placeholder="business@email.com">
+            </div>
+
+          </form>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="post-btn">Post Job</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- For button and modal (BS embedded functionality) -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#job-modal" id="add-job-btn">
+    Add your posting.
+  </button>
+
+  <div class="modal fade" id="job-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Job Description</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+
+          <form>
+            <div class="form-group">
+              <label for="job-title">Job Title</label>
+              <input type="text" class="form-control" id="title-input" placeholder="Full-Stack Developer">
+            </div>
+
+            <div class="form-group">
+              <label for="location">Location</label>
+              <input type="text" class="form-control" id="location-input" placeholder="San Diego, CA">
+            </div>
+
+            <label class="mr-sm-2" for="inlineFormCustomSelect">Part/Full-time</label>
+            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="time-input">
+              <option selected>Choose...</option>
+              <option value="1">Part-time</option>
+              <option value="2">Full-time</option>
+            </select>
+
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea class="form-control" id="description-input" rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="posting-link">Posting Link</label>
+              <input type="text" class="form-control" id="link-input" placeholder="www.yourjob.com">
+            </div>
+
+            <div class="form-group">
+              <label for="email-label">Contact</label>
+              <input type="email" class="form-control" id="contact-input" aria-describedby="emailHelp" placeholder="Enter email">
+            </div>
+
+          </form>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="post-btn">Save changes</button>
         </div>
 
 
-    <div class="text-center">
-        <button class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalSubscriptionForm">Log in with Firebase</button>
+      </div>
     </div>
+  </div>
 
-    <div id="firechat-wrapper"></div>
 
-    <div id='firechat' class='full'>
-        <div id='firechat-header' class='clearfix'>
-            <div class='clearfix'></div>
+  <!-- FIREBASE LOGIN HERE
+  <div class="modal fade" id="modalSubscriptionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">Login</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <div class="modal-body mx-3">
+          <div class="md-form mb-5">
+            <i class="fa fa-user prefix grey-text"></i>
+            <input type="text" id="name" class="form-control validate">
+            <label data-error="wrong" data-success="right" for="form3">Your name</label>
+          </div>
+
+          <div class="md-form mb-4">
+            <i class="fa fa-envelope prefix grey-text"></i>
+            <input type="email" id="email" class="form-control validate">
+            <label data-error="wrong" data-success="right" for="form2">Your email</label>
+          </div>
+
+          <div class="md-form mb-4">
+            <i class="fa fa-envelope prefix grey-text"></i>
+            <input type="password" id="password" class="form-control validate">
+            <label data-error="wrong" data-success="right" for="form2">Password</label>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button class="btn btn-indigo" id="send-user-info">Send <i class="fa fa-paper-plane-o ml-1"></i></button>
+        </div>
+      </div>
     </div>
+  </div>
+<--button-->
+  <!-- <div class="text-center">
+    <button class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalSubscriptionForm">Log in
+      with Firebase</button>
+  </div>   -->
+  <!-- FIRECHAT CODE HERE -->
+  
+<!-- CHAT MARKUP -->
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Live Chat</h5>
 
-    <div id='firechat-tabs' class='clearfix'>
-        <ul id='firechat-tab-list' class='nav nav-tabs clearfix'></ul>
-        <div id='firechat-tab-content' class='tab-content'></div>
-    </div>
+  <div class='example-chat-toolbar'>
+    <label for="nameInput">Username:</label>
+    <input type='text' id='nameInput' placeholder='enter a username...'>
+  </div>
+  
+  <ul id='example-messages' class="example-chat-messages"></ul>
 
-    <div id='firechat-footer' class='clearfix'></div>
+  <footer>
+      <label for="messageInput">Message:</label>
+    <input type='text' id='messageInput'  placeholder='Type a message...'>
+  </footer>
+</div>
+
+<!-- CHAT JAVACRIPT -->
+<!-- <script>
+
+</script> -->
 
 
+    <!-- Javascript links jQuery, BSjQuery, firebase, ownJS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous"></script>
 
-
-
-
-
-
-        <!-- Javascript links jQuery, BSjQuery, firebase, ownJS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+      crossorigin="anonymous"></script>
 
     <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
 
