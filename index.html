@@ -24,30 +24,36 @@
 </head>
 
 <body>
+    <div class="container">
+    <div class="jumbotron alert-danger">
+        <h1>Hello, Welcome to Trilogy Job Search (TJS)</h1>
+      </div>
+    </div>
   <div class="container">
     <div class="row">
       
       <div class="col-md-6.5 col-md-offset-3.5" id="chat-bod" >
         <div class="alert alert-danger" id="chat-jumbo" role="alert">
-          <div class="card"  style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Live Chat</h5>
-
-              <div class='example-chat-toolbar'>
-                <label for="nameInput">Username:</label>
-                <input type='text' id='nameInput' placeholder='enter a username...'>
+            <div class="card"  style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Live Chat</h5>
+    
+                  <div class='example-chat-toolbar'>
+                    <label for="nameInput">Username:</label>
+                    <input type='text' id='nameInput' placeholder='enter a username...'>
+                  </div>
+    
+    
+                  <ul id='example-messages' class="example-chat-messages"></ul>
+    
+                  <footer>
+                    <label for="messageInput">Message:</label>
+                    <input type='text' id='messageInput' placeholder='Type a message...'>
+                  </footer>
+                </div>
               </div>
-
-
-              <ul id='example-messages' class="example-chat-messages"></ul>
-
-              <footer>
-                <label for="messageInput">Message:</label>
-                <input type='text' id='messageInput' placeholder='Type a message...'>
-              </footer>
-            </div>
-          </div>
         </div>
+    </div>
     </div>
         
 
@@ -328,11 +334,74 @@
 
         <div class="col-md-6">
             <div class="alert alert-danger" id="chat-jumbo" role="alert">
-          <a href="./QA.html"><button>Go to Q&A</button></a>
+          <div class="container">
+    <table class="table table-striped table-dark" id="qa-table">
+        <thead>
+            <tr>
+                <th scope="col">Q&A</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+        <div id="qa-card">
+
+
+            <!-- <p class="card-text">*Your question will pop up here*</p>
+            <a href="#" class="btn btn-primary">Answer Question!</a> -->
+        </div>
+    </div>
+    
+
+    <div class="container">
+
+
+
+        <form class="table table-striped table-light">
+            <div class="form-group">
+                <label for="question-input">Ask A Question:</label>
+                <textarea class="form-control" id="question-input" rows="1"></textarea>
+                <button class="btn btn-primary float-left" id="add-question-btn">Submit</button>
+            </div>
+        </form>
+    </div>
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="answers">
+
+            </div>
+            <form class="answer-question form-group">
+              <textarea required id="answer" rows="8" cols="55" class="form-control" id="answer" placeholder="answer"></textarea>
+              <button type="submit" class="btn btn-primary" name="button">post answer</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
         </div>
 
         </div>
-      </div>
+      
     </div>
 
 
@@ -347,7 +416,9 @@
 
     <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
 
-    <script src="assets/javascript/script.js"></script>
+        
+    <script src="assets/javascript/script.js" src="./play.js"></script>
+    
 
 
 </body>
