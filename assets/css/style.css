@@ -7,6 +7,9 @@
     margin-right: 80px;
 }
 
+.welcome-container {
+    text-align: center;
+}
 #chat-jumbo {
     opacity: .9;
     
@@ -57,9 +60,25 @@ textarea {
 #job-listing-header {
     margin: 2px;
     padding: 5px;
+    font-size: 32px;
+    font-style: bold;
 }
 
 #job-btn:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#qa-title {
+    font-size: 32px;
+    color: #a94442;
+}
+
+.card {
+    padding: 2px;
+}
+
+.card:hover {
     text-decoration: underline;
     cursor: pointer;
 }
