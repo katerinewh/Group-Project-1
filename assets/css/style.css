@@ -15,14 +15,13 @@
 body {
     background-image: url("http://www.twitrcovers.com/wp-content/uploads/2013/04/Sunset-Cityscapes-l.jpg");
     background-size: cover;
+    width: 100%;
 }
 
 .container {
-
     margin-top: 20px;
+    width: 100%;
 }
-
-
 
 
 
@@ -74,6 +73,11 @@ textarea {
 
 #qa-table {
     width: 500px;
+    overflow: auto;
+}
+
+.qa-container {
+    overflow: auto;
 }
 
 #question-input {
