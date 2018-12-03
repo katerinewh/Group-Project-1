@@ -1,14 +1,10 @@
-.navbar {
-    background: #eff5ff;
-    width: 92%;
-    margin-top: 50px;
-    color: black;
-    margin-left: 50px;
-    margin-right: 80px;
-}
+
 
 .welcome-container {
     text-align: center;
+    margin-left: 16px;
+    margin-right: 16px;
+    border-radius: 5px;
 }
 #chat-jumbo {
     opacity: .9;
@@ -73,6 +69,13 @@ textarea {
     font-size: 32px;
     color: #a94442;
 }
+.card-title {
+    width: 1000px;
+}
+
+#nameInput {
+    width: 1000px;
+}
 
 .card {
     padding: 2px;
@@ -83,11 +86,20 @@ textarea {
     cursor: pointer;
 }
 
+#chat-bod {
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
 #example-messages {
     word-wrap: break-word;
     height: 200px;
-    width: 200px;
+    width: 1000px;
     overflow: auto;
+}
+
+#messageInput {
+    width: 1000px;
 }
 
 #qa-table {
