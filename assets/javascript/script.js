@@ -76,7 +76,7 @@ $(document).ready(function () {
             var emptyModal = $("#job-info-modal");
             emptyModal.modal('show');
             var jobHeaderSpan = $("#modal-header-id");
-        
+
             var jobCompanySpan = $("#company-span");
             var jobTypeSpan = $("#job-type-span");
             var jobDescriptionSpan = $("#description-span");
@@ -85,7 +85,7 @@ $(document).ready(function () {
             var googleMapsUrl = `https://www.google.com/maps/embed/v1/place?q=${addressSnapshot}&key=AIzaSyBSvWzj-nolifiqWXXRDit4tlhOKifsIAs`;
 
             $("#google-maps").attr('src', googleMapsUrl);
-            
+
             jobHeaderSpan.html(modalTitle);
             jobCompanySpan.html(modalCompany);
             jobTypeSpan.html(modalTime);
@@ -140,24 +140,22 @@ $(document).ready(function () {
 
 
 
-    var questionInput = "";
+    // var answerArray =
 
-    var answerArray =
-
-        $("#add-question-btn").on("click", function (e) {
-            e.preventDefault();
-            var questionInput = $("#question-input").val().trim();
+    $("#add-question-btn").on("click", function (e) {
+        e.preventDefault();
+        var questionInput = $("#question-input").val().trim();
 
 
-            // console.log(questionInput);
+        // console.log(questionInput);
 
-            database.ref().push({
-                questionInput: questionInput,
-                answerArray: []
-            });
-
-
+        database.ref().push({
+            questionInput: questionInput,
+            answerArray: []
         });
+
+
+    });
 
     database.ref().on("child_added", function (snap) {
         console.log(snap.val().questionInput);
@@ -166,16 +164,17 @@ $(document).ready(function () {
         card.attr('data-key', snap.key)
         card.append(snap.val().questionInput);
         $("#qa-card").append(card);
-    })
+    });
 
-    var key
+    // var key
 
     $(document).on('click', '.card', function (event) {
 
         var question = event.target.dataset.question
         key = event.target.dataset.key
-        $('.modal-title').html(question)
+        $('.modal-title').html(question);
         $(".answers").empty();
+        // $('#exampleModal').modal('show');
         database.ref('/' + key + '/answers').once("value", function (snap) {
             console.log(database);
             // for
@@ -185,23 +184,23 @@ $(document).ready(function () {
                 newAnswer.text(answerObj[key].answer);
                 $('.answers').append(newAnswer)
 
-            }
+            };
 
 
-        })
-    })
+        });
+    });
 
 
     $('.answer-question').on('submit', function (event) {
         event.preventDefault()
-        var answer = $('#answer').val()
-        var newAnswer = $('<p>')
+        var answer = $('#answer').val();
+        var newAnswer = $('<p>');
         newAnswer.text(answer);
-        $('.answers').append(newAnswer)
+        $('.answers').append(newAnswer);
 
         database.ref('/' + key + '/answers').push({
             answer: answer
-        })
+        });
         console.log(key);
         $('.answer-question')[0].reset();
     });
