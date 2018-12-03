@@ -9,6 +9,7 @@
 
 #chat-jumbo {
     opacity: .9;
+    
 }
 
 body {
@@ -17,14 +18,11 @@ body {
 }
 
 .container {
-    margin-top: 30px;
+
+    margin-top: 20px;
 }
 
 
-.modal-content{
-    overflow: auto;
-    margin: 5px;
-}
 
 
 
@@ -72,4 +70,16 @@ textarea {
     height: 200px;
     width: 200px;
     overflow: auto;
+}
+
+#qa-table {
+    width: 500px;
+}
+
+#question-input {
+    width: 500px;
+}
+
+h1 {
+    font-size: 50px !important;
 }
