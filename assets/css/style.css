@@ -59,11 +59,13 @@ textarea {
     font-size: 32px;
     font-style: bold;
 }
-
 #job-btn:hover {
     text-decoration: underline;
     cursor: pointer;
 }
+
+
+
 
 #qa-title {
     font-size: 32px;
@@ -81,10 +83,7 @@ textarea {
     padding: 2px;
 }
 
-.card:hover {
-    text-decoration: underline;
-    cursor: pointer;
-}
+
 
 #chat-bod {
     margin-left: 16px;
@@ -106,6 +105,8 @@ textarea {
     width: 500px;
     overflow: auto;
 }
+
+
 
 .qa-container {
     overflow: auto;
