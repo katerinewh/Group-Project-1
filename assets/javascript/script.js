@@ -75,8 +75,9 @@ $(document).ready(function () {
             event.preventDefault();
             var emptyModal = $("#job-info-modal");
             emptyModal.modal('show');
-            var jobHeaderSpan = $(".modal-header-div");
-            var jobCompanySpan = $("#company-span")
+            var jobHeaderSpan = $("#modal-header-id");
+        
+            var jobCompanySpan = $("#company-span");
             var jobTypeSpan = $("#job-type-span");
             var jobDescriptionSpan = $("#description-span");
             var jobContactSpan = $("#contact-span");
@@ -84,8 +85,7 @@ $(document).ready(function () {
             var googleMapsUrl = `https://www.google.com/maps/embed/v1/place?q=${addressSnapshot}&key=AIzaSyBSvWzj-nolifiqWXXRDit4tlhOKifsIAs`;
 
             $("#google-maps").attr('src', googleMapsUrl);
-
-
+            
             jobHeaderSpan.html(modalTitle);
             jobCompanySpan.html(modalCompany);
             jobTypeSpan.html(modalTime);

@@ -1,6 +1,10 @@
-#firechat #firechat-tabs {
-    height: 375px;
-    width: 500px;
+.navbar {
+    background: #eff5ff;
+    width: 92%;
+    margin-top: 50px;
+    color: black;
+    margin-left: 50px;
+    margin-right: 80px;
 }
 
 #chat-jumbo {
@@ -14,24 +18,32 @@ body {
 }
 
 .container {
+
     margin-top: 20px;
 }
 
 
 
 
-#company-name, #job-type, #description, #contact, #link {
-    font-weight: bold;
-    font-size: 14px;
-}
 
 .modal-header-div {
-    margin-left: 10px;
+    margin-left: 15px;
+    margin-top: 15px;
+    font-size: 32px;
+
 }
 
 #google-maps {
     width: 100%;
     text-align: center;
+}
+
+#company-span {
+    padding-bottom: 50px;
+}
+
+#job-type {
+    margin-top: 15px;
 }
 
 textarea {

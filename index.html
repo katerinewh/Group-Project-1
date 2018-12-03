@@ -9,27 +9,28 @@
     
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
-    <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
-    <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
-
-    <!-- Firechat -->
-    <link rel="stylesheet" href="https://cdn.firebase.com/libs/firechat/3.0.1/firechat.min.css" />
-    <script src="https://cdn.firebase.com/libs/firechat/3.0.1/firechat.min.js"></script>
 
     <!-- Stylesheets -->
-    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
 <body>
-    <div class="container">
-    <div class="jumbotron alert-danger">
+
+    <div class="welcome-container">
+      <div class="jumbotron alert-danger">
         <h1>Hello, Welcome to Trilogy Job Search (TJS)</h1>
       </div>
     </div>
+  
+    <nav class="navbar">
+        <h1><img src="./assets/logo-2.png">Title</h1>
+    </nav> 
+
+  
   <div class="container">
+      
+   
     <div class="row">
       
       <div class="col-md-6.5 col-md-offset-3.5" id="chat-bod" >
@@ -62,14 +63,15 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header-div text-left">
+                  <h1 id="modal-header-id"></h1>
                 </div>
                 <div class="modal-body">
-                    <span id="location-span"></span>
                     <span id="company-span"></span>
-                    <p id="job-type">Job Type:<span id="job-type-span"></span></p>
-                    <p id="description">Description:<span id="description-span"></span></p>
-                    <p id="contact">Contact:<span id="contact-span"></span></p>
-                    <p id="link">Link:<span id="link-span"></span></p>
+
+                    <p id="job-type"><b>Job Type: </b><span id="job-type-span"></span></p>
+                    <p id="description"><b>Description: </b><span id="description-span"></span></p>
+                    <p id="contact"><b>Contact: </b><span id="contact-span"></span></p>
+                    <p id="link"><b>Link: </b><span id="link-span"></span></p>
                     <iframe width="450" height="400" frameborder="1" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=ucsd%20extension&key=AIzaSyBSvWzj-nolifiqWXXRDit4tlhOKifsIAs" id="google-maps" allowfullscreen></iframe>
                 </div>
 
@@ -110,7 +112,7 @@
 
                         <div class="form-group">
                             <label for="location">Location</label>
-                            <input type="text" class="form-control" id="location-input" placeholder="San Diego, CA">
+                            <input type="text" class="form-control" id="location-input" placeholder="Redmond, WA">
                         </div>
 
                         <div class="form-group">
